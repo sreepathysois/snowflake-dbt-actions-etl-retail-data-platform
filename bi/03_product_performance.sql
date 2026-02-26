@@ -7,5 +7,5 @@ SELECT
     product,
     total_sales,
     total_quantity
-FROM retail_prod.gold.sales_summary
+FROM retail_prod.public_gold.sales_summary
 ORDER BY total_sales DESC;
