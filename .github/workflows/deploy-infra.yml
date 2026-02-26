@@ -62,7 +62,7 @@ jobs:
       # ------------------------------------------------
       - name: Upload CSV to Stage
         run: |
-          snow stage copy data/retail_transactions.csv \
+          snow stage copy -c github data/retail_transactions.csv \
             @retail_prod.bronze.retail_stage
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
