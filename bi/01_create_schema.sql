@@ -1,0 +1,3 @@
+USE DATABASE retail_prod;
+
+CREATE OR REPLACE SCHEMA bi;
