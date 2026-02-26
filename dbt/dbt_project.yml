@@ -1,0 +1,12 @@
+name: retail_project
+version: '1.0'
+profile: retail_profile
+
+models:
+  retail_project:
+    silver:
+      schema: silver
+      materialized: table
+    gold:
+      schema: gold
+      materialized: table
