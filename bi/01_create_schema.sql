@@ -1,3 +1,4 @@
+USE WAREHOUSE wh_bi;
 USE DATABASE retail_prod;
 
 CREATE OR REPLACE SCHEMA bi;
