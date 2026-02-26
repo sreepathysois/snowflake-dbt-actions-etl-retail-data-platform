@@ -16,10 +16,7 @@ jobs:
       - name: Install Snowflake CLI
         run: pip install snowflake-cli-labs 
 
-      - name: Debug Account
-        run:  echo "Account is: $SNOWFLAKE_ACCOUNT"
-        env:
-          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+  
 
       - name: Configure Snowflake Connection
         run: |
