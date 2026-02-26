@@ -4,9 +4,11 @@ profile: retail_profile
 
 models:
   retail_project:
+    +database: retail_prod
+    +schema: null
+
     silver:
-      schema: silver
-      materialized: table
+      +schema: silver
+
     gold:
-      schema: gold
-      materialized: table
+      +schema: gold
