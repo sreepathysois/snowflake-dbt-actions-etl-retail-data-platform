@@ -1,4 +1,4 @@
-name: Deploy Snowflake + dbt Pipeline
+name: Deploy Snowflake + dbt + BI Pipeline
 
 on:
   push:
@@ -64,10 +64,6 @@ jobs:
         run: |
           snow stage copy -c github data/retail_transactions.csv \
             @retail_prod.bronze.retail_stage
-        env:
-          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
       # ------------------------------------------------
       # Load Bronze Table
@@ -110,9 +106,27 @@ jobs:
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
 
       # ------------------------------------------------
-      # Run dbt
+      # Run dbt (Silver + Gold)
       # ------------------------------------------------
       - name: Run dbt
         run: |
           cd dbt
           dbt run
+
+      # ------------------------------------------------
+      # Deploy BI Views (Acts like BI Worksheet)
+      # ------------------------------------------------
+      - name: Deploy BI Schema
+        run: snow sql -c github -f snowflake/bi/01_create_schema.sql
+
+      - name: Deploy KPI View
+        run: snow sql -c github -f snowflake/bi/02_kpi_summary.sql
+
+      - name: Deploy Product Performance View
+        run: snow sql -c github -f snowflake/bi/03_product_performance.sql
+
+      - name: Deploy Revenue Trend View
+        run: snow sql -c github -f snowflake/bi/04_revenue_trend.sql
+
+      - name: Deploy Customer Contribution View
+        run: snow sql -c github -f snowflake/bi/05_customer_contribution.sql
