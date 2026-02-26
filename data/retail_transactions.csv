@@ -1,0 +1,5 @@
+transaction_id,customer_id,product,quantity,price,transaction_ts
+1,101,Laptop,1,60000,2026-02-25 10:00:00
+2,102,Mouse,2,500,2026-02-25 10:05:00
+3,101,Keyboard,1,2000,2026-02-25 10:10:00
+4,103,Laptop,1,60000,2026-02-25 11:00:00
