@@ -70,7 +70,7 @@ jobs:
                 role: ACCOUNTADMIN
                 warehouse: wh_etl
                 database: retail_prod
-                schema: silver
+                schema: public
           EOF
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
